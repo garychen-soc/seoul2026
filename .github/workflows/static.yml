@@ -33,6 +33,16 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Generate app version
+        run: |
+          cat > version.json <<EOF
+          {
+            "version": "${GITHUB_SHA}-${GITHUB_RUN_ID}",
+            "sha": "${GITHUB_SHA}",
+            "run": "${GITHUB_RUN_ID}",
+            "builtAt": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          }
+          EOF
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
