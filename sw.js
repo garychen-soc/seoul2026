@@ -1,4 +1,4 @@
-const CACHE_NAME = 'seoul2026-v4';
+const CACHE_NAME = 'seoul2026-v5';
 const ASSETS = ['./', './index.html', './manifest.json', './icons/icon.svg'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)));
