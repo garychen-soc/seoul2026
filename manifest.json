@@ -1,0 +1,14 @@
+{
+  "name": "Seoul Trip 2026",
+  "short_name": "Seoul 2026",
+  "description": "首爾 2026 旅遊行程 PWA",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#eef2f7",
+  "theme_color": "#0f62fe",
+  "lang": "zh-Hant",
+  "icons": [
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
