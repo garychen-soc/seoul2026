@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#0f62fe" />
+<link rel="manifest" href="manifest.json" />
+<title>Seoul 2026 行程 PWA</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--text:#162033;--muted:#5f6b7a;--line:#dbe3ef;--brand:#0f62fe;--brand2:#7c3aed;--ok:#0e9f6e;--warn:#b7791f;--shadow:0 10px 30px rgba(17,24,39,.08)}
+[data-theme=dark]{--bg:#101827;--card:#182235;--text:#eef4ff;--muted:#a9b5c7;--line:#2b3a53;--brand:#79a8ff;--brand2:#b99cff;--shadow:0 10px 30px rgba(0,0,0,.28)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Segoe UI",sans-serif;line-height:1.55}a{color:var(--brand);text-decoration:none}.wrap{max-width:980px;margin:auto;padding:16px 14px 90px}.hero{border-radius:26px;padding:22px;color:white;background:linear-gradient(135deg,#0f62fe,#7c3aed);box-shadow:var(--shadow)}.hero h1{margin:0;font-size:28px}.hero p{margin:8px 0 0;opacity:.92}.bar{position:sticky;top:0;z-index:2;background:rgba(244,247,251,.88);backdrop-filter:blur(12px);padding:10px 0}[data-theme=dark] .bar{background:rgba(16,24,39,.88)}.search{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:16px;background:var(--card);color:var(--text);font-size:16px}.tabs{display:flex;gap:8px;overflow:auto;padding:10px 0}.tab{white-space:nowrap;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:10px 14px;font-weight:700}.tab.active{background:var(--brand);color:white;border-color:var(--brand)}.grid{display:grid;gap:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:16px;box-shadow:var(--shadow)}.card h2,.card h3{margin:0 0 8px}.meta{color:var(--muted);font-size:14px}.item{border-left:4px solid var(--brand);padding:10px 0 10px 12px;border-bottom:1px dashed var(--line)}.item:last-child{border-bottom:0}.time{font-weight:800;color:var(--brand)}.tag{display:inline-block;margin:4px 6px 0 0;padding:4px 9px;border-radius:999px;background:rgba(15,98,254,.1);color:var(--brand);font-size:12px;font-weight:800}.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:12px;padding:9px 11px;font-weight:800}.btn.primary{background:var(--brand);color:white;border-color:var(--brand)}.section{display:none}.section.active{display:block}.mini{font-size:13px;color:var(--muted)}.done{text-decoration:line-through;opacity:.6}.fab{position:fixed;right:16px;bottom:16px;display:flex;gap:8px}.fab button{border:0;border-radius:999px;padding:13px 15px;background:var(--text);color:var(--card);font-weight:900;box-shadow:var(--shadow)}ul{padding-left:20px}details{border:1px solid var(--line);border-radius:16px;padding:10px 12px;background:var(--card)}summary{font-weight:900;cursor:pointer}.two{display:grid;gap:12px}@media(min-width:720px){.two{grid-template-columns:1fr 1fr}.hero h1{font-size:36px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <h1>Seoul 2026 首爾行程</h1>
+    <p>可離線使用的手機版 PWA：行程、票券、地圖、購物、韓文速查。</p>
+    <div class="btns"><a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Seoul" target="_blank">開啟首爾地圖</a><button class="btn" id="installBtn" hidden>安裝到手機</button></div>
+  </header>
+  <div class="bar">
+    <input id="q" class="search" placeholder="搜尋：景點、餐廳、票券、地鐵、韓文..." />
+    <nav class="tabs" id="tabs"></nav>
+  </div>
+  <main id="app"></main>
+</div>
+<div class="fab"><button id="themeBtn">深色</button><button onclick="scrollTo({top:0,behavior:'smooth'})">Top</button></div>
+<script>
+const tabs=[['itinerary','行程'],['tickets','票券'],['maps','地圖'],['shopping','購物'],['korean','韓文'],['tips','提醒']];
+const days=[
+{d:'Day 1',title:'抵達首爾 / 明洞入住',items:[['抵達','機場入境、eSIM 已購買，確認網路與交通卡。','仁川機場 AREX T-money'],['入住','明洞飯店 check-in，整理行李。','明洞 飯店'],['晚餐','明洞商圈覓食與換錢，保留彈性。','明洞 換錢所 美食']]},
+{d:'Day 2',title:'韓國歷史文化巡禮',items:[['08:30','從飯店散步前往 Isaac Toast 明洞店，早餐後出發。','Isaac Toast 明洞'],['上午','景福宮、光化門、國立古宮博物館；可租韓服拍照。','景福宮 光化門 韓服'],['中午','土俗村蔘雞湯或附近韓食。','土俗村蔘雞湯'],['下午','北村韓屋村、三清洞、仁寺洞散步。','北村韓屋村 三清洞 仁寺洞'],['晚上','清溪川或明洞夜市。','清溪川 明洞夜市']]},
+{d:'Day 3',title:'樂天世界 / 蠶室',items:[['上午','前往樂天世界，建議事先購票。','樂天世界 Lotte World'],['下午','樂天世界塔 Seoul Sky 或樂天 Mall。','Seoul Sky 樂天世界塔'],['晚上','蠶室或弘大晚餐，視體力調整。','蠶室 弘大']]},
+{d:'Day 4',title:'弘大 / 延南洞 / 漢江',items:[['上午','弘大、延南洞咖啡與小店。','弘大 延南洞'],['下午','汝矣島漢江公園或盤浦大橋。','漢江 汝矣島 盤浦大橋'],['晚上','炸雞外送或烤肉。','韓式炸雞 烤肉']]},
+{d:'Day 5',title:'購物補貨 / 回程準備',items:[['上午','Olive Young、超市、伴手禮補貨。','Olive Young 樂天超市'],['下午','飯店取行李，預留交通時間前往機場。','AREX 仁川機場'],['回程','退稅、托運、安檢。','韓國退稅']]}
+];
+const tickets=[
+['AREX 機場快線','建議先比價 Klook / KKday，尖峰時段可節省排隊時間。','https://www.klook.com/','https://www.kkday.com/'],
+['樂天世界門票','熱門項目，建議提前購買並確認是否含 Magic Pass。','https://www.klook.com/','https://www.kkday.com/'],
+['Seoul Sky','天氣好再買也可；若行程固定可先買電子票。','https://www.klook.com/','https://www.kkday.com/'],
+['韓服租借','景福宮周邊很多店，線上預約通常較便宜。','https://www.klook.com/','https://www.kkday.com/']
+];
+const maps=['明洞 Myeongdong','景福宮 Gyeongbokgung Palace','北村韓屋村 Bukchon Hanok Village','仁寺洞 Insadong','樂天世界 Lotte World','Seoul Sky','弘大 Hongdae','延南洞 Yeonnam-dong','汝矣島漢江公園','仁川國際機場'];
+const shopping=['護照','信用卡 / 現金','T-money / WOWPASS','行動電源','轉接頭','常備藥','雨傘','保暖衣物','Olive Young 清單','伴手禮清單','退稅單據'];
+const korean=[['你好','안녕하세요','an-nyeong-ha-se-yo'],['謝謝','감사합니다','gam-sa-ham-ni-da'],['不好意思','죄송합니다','joe-song-ham-ni-da'],['多少錢？','얼마예요?','eol-ma-ye-yo'],['請問廁所在哪？','화장실 어디예요?','hwa-jang-sil eo-di-ye-yo'],['不要辣','맵지 않게 해주세요','maep-ji an-ke hae-ju-se-yo']];
+let active=localStorage.tab||'itinerary';
+const app=document.getElementById('app'), q=document.getElementById('q');
+function mapLink(s){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(s)}
+function renderTabs(){document.getElementById('tabs').innerHTML=tabs.map(([id,n])=>`<button class="tab ${id===active?'active':''}" onclick="active='${id}';localStorage.tab=active;render()">${n}</button>`).join('')}
+function itinerary(){return `<section class="section active grid">${days.map(day=>`<article class="card searchable"><h2>${day.d}｜${day.title}</h2>${day.items.map(([t,txt,key])=>`<div class="item"><div class="time">${t}</div><div>${txt}</div><div class="btns"><a class="btn" target="_blank" href="${mapLink(key)}">Google Maps</a><span class="tag">${key}</span></div></div>`).join('')}</article>`).join('')}</section>`}
+function ticketPage(){return `<section class="section active grid">${tickets.map(([n,desc,k,kk])=>`<article class="card searchable"><h2>${n}</h2><p>${desc}</p><div class="btns"><a class="btn primary" target="_blank" href="${k}">Klook 搜尋</a><a class="btn" target="_blank" href="${kk}">KKday 搜尋</a></div></article>`).join('')}</section>`}
+function mapPage(){return `<section class="section active card searchable"><h2>地圖地標</h2><p class="meta">點擊即可開啟 Google Maps。</p><div class="grid">${maps.map(m=>`<a class="btn" target="_blank" href="${mapLink(m)}">${m}</a>`).join('')}</div></section>`}
+function shoppingPage(){return `<section class="section active card searchable"><h2>出發 / 購物檢查清單</h2>${shopping.map((s,i)=>`<label class="item" style="display:block"><input type="checkbox" onchange="this.parentElement.classList.toggle('done',this.checked)"> ${s}</label>`).join('')}</section>`}
+function koreanPage(){return `<section class="section active grid">${korean.map(r=>`<article class="card searchable"><h2>${r[0]}</h2><div style="font-size:28px;font-weight:900">${r[1]}</div><div class="meta">${r[2]}</div></article>`).join('')}</section>`}
+function tipsPage(){return `<section class="section active grid"><article class="card searchable"><h2>使用提醒</h2><ul><li>GitHub Pages 首次部署可能需要到 repo Settings → Pages 選擇 GitHub Actions。</li><li>Android Chrome 可用「加入主畫面」安裝；iPhone Safari 可用分享 → 加入主畫面。</li><li>Line 傳送網頁連結可直接開啟，避免傳 HTML 檔被壓成 zip。</li><li>重要票券建議截圖與離線保存。</li></ul></article><article class="card searchable"><h2>交通建議</h2><p>首爾市區以地鐵為主，跨區移動先用 Google Maps / Naver Map 比較時間。機場往返優先 AREX，攜帶大行李時預留轉乘時間。</p></article></section>`}
+function content(){return {itinerary:itinerary,tickets:ticketPage,maps:mapPage,shopping:shoppingPage,korean:koreanPage,tips:tipsPage}[active]()}
+function render(){renderTabs();app.innerHTML=content();filter()}
+function filter(){const s=q.value.trim().toLowerCase();document.querySelectorAll('.searchable').forEach(el=>{el.style.display=!s||el.textContent.toLowerCase().includes(s)?'':'none'})}
+q.addEventListener('input',filter);render();
+document.getElementById('themeBtn').onclick=()=>{const dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'';localStorage.theme=dark?'dark':'';themeBtn.textContent=dark?'淺色':'深色'};if(localStorage.theme==='dark'){document.documentElement.dataset.theme='dark';themeBtn.textContent='淺色'}
+let promptEvent;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();promptEvent=e;installBtn.hidden=false});installBtn.onclick=()=>promptEvent&&promptEvent.prompt();
+if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(()=>{})}
+</script>
+</body>
+</html>
