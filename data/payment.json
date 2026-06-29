@@ -6,6 +6,7 @@
     "有元大銀行帳戶",
     "持有星展 eco 永續卡",
     "持有中信 UniOpen 卡",
+    "持有永豐 SPORT 卡",
     "eSIM 已購買"
   ],
   "sources": [
@@ -22,7 +23,17 @@
     {
       "name": "台灣Pay 韓國 TWQR 店家與說明",
       "url": "https://www.taiwanpay.com.tw/fisc-tpay/news/shopping/korea",
-      "summary": "用來查詢韓國 TWQR 合作店家、標誌與使用說明；此行程不把台灣Pay列為主要支付工具。"
+      "summary": "用來查詢韓國 TWQR 合作店家、標誌與使用說明。"
+    },
+    {
+      "name": "台灣Pay 7/1 韓國 TWQR 20% 活動",
+      "url": "https://www.taiwanpay.com.tw/fisc-tpay/news/event/01KFN0N8JJXBPDSVJJ6Q1XH7AJ",
+      "summary": "官方活動頁標題為「暑假遊韓最速Pay TWQR獨享20%回饋」；7/1 起可作為韓國 TWQR 支援店家的 20% 備援選項。"
+    },
+    {
+      "name": "永豐 SPORT 卡官方權益",
+      "url": "https://bank.sinopac.com/sinopacBT/personal/credit-card/introduction/bankcard/sportcard.html",
+      "summary": "2026/7/1-12/31，SPORT 卡一般消費最高 2% 豐點，指定支付/通路最高 5% 豐點；指定行動支付包含 Google Pay，國外消費須符合銀行定義與帳單明細認列。"
     }
   ],
   "priority": [
@@ -34,36 +45,48 @@
     },
     {
       "rank": 2,
+      "title": "7/1 起悠遊付活動二額滿或想分散 TWQR 額度",
+      "recommendation": "若店家支援 TWQR，可改用台灣Pay 7/1 韓國 TWQR 20% 活動；先確認參與金融機構、App 顯示與額度狀態。",
+      "keywords": ["台灣Pay", "TWQR", "20%", "韓國", "7/1", "額滿", "備援"]
+    },
+    {
+      "rank": 3,
       "title": "悠遊付不能用、額滿或交易失敗",
       "recommendation": "若店家支援 TWQR，改用 icash Pay。使用者非新戶，只看一般回饋，不把新戶加碼當主優惠。",
       "keywords": ["icash", "icash Pay", "TWQR", "非新戶", "悠遊付不能用", "額滿"]
     },
     {
-      "rank": 3,
+      "rank": 4,
+      "title": "非 TWQR 且可用 Google Pay 感應付款",
+      "recommendation": "若已符合永豐 SPORT 卡活動條件，使用永豐 SPORT 卡綁 Google Pay。韓國交易若帳單明細符合指定行動支付且屬國外一般消費，可列入最高 5% 豐點。",
+      "keywords": ["永豐", "SPORT", "Sport", "Google Pay", "韓國", "5%", "國外消費", "行動支付"]
+    },
+    {
+      "rank": 5,
       "title": "非 TWQR 店家",
       "recommendation": "優先刷中信 UniOpen 卡。",
       "keywords": ["UniOpen", "信用卡", "非 TWQR"]
     },
     {
-      "rank": 4,
+      "rank": 6,
       "title": "UniOpen 不適用或備援",
       "recommendation": "使用星展 eco 永續卡。",
       "keywords": ["eco", "星展", "DBS", "備援"]
     },
     {
-      "rank": 5,
+      "rank": 7,
       "title": "地鐵與公車",
       "recommendation": "使用 T-money / WOWPASS。",
       "keywords": ["T-money", "WOWPASS", "地鐵", "公車", "交通"]
     },
     {
-      "rank": 6,
+      "rank": 8,
       "title": "Kakao T / Uber",
       "recommendation": "App 內綁信用卡，UniOpen 優先。",
       "keywords": ["Kakao T", "Uber", "計程車", "UniOpen"]
     },
     {
-      "rank": 7,
+      "rank": 9,
       "title": "廣藏市場、小吃攤、傳統市場",
       "recommendation": "準備信用卡與現金，不要完全依賴 TWQR。",
       "keywords": ["廣藏市場", "市場", "小吃攤", "現金", "信用卡"]
@@ -77,13 +100,13 @@
     },
     {
       "trigger": "悠遊付不能用 / 額滿 / 交易失敗",
-      "action": "改用 icash Pay",
-      "note": "TWQR 店家的備援；非 icash Pay 新戶，不把新戶加碼列入主優惠。"
+      "action": "7/1 起先看台灣Pay，再用 icash Pay",
+      "note": "台灣Pay 有韓國 TWQR 20% 活動可作備援；若無法使用，再改 icash Pay。"
     },
     {
       "trigger": "沒有 TWQR",
-      "action": "中信 UniOpen",
-      "note": "一般店家刷卡主力。"
+      "action": "Google Pay 可用先看 SPORT，否則 UniOpen",
+      "note": "永豐 SPORT 卡綁 Google Pay 若符合活動條件可列最高 5% 豐點；不符合或無 Google Pay 再用 UniOpen。"
     },
     {
       "trigger": "市場小攤",
@@ -99,27 +122,27 @@
   "scenarios": [
     {
       "scene": "CU / GS25 / 7-11 / emart24",
-      "recommendation": "悠遊付 TWQR -> icash Pay -> UniOpen",
-      "note": "便利商店看到 TWQR 先掃悠遊付；漢江 GS25 泡麵也同樣處理。",
-      "keywords": ["便利商店", "CU", "GS25", "7-11", "emart24", "漢江", "泡麵", "TWQR"]
+      "recommendation": "悠遊付 TWQR -> 台灣Pay TWQR 20% -> icash Pay -> SPORT Google Pay -> UniOpen",
+      "note": "便利商店看到 TWQR 先掃悠遊付；悠遊付額滿或不可用時，7/1 起可看台灣Pay 20%。",
+      "keywords": ["便利商店", "CU", "GS25", "7-11", "emart24", "漢江", "泡麵", "TWQR", "台灣Pay", "SPORT", "Google Pay"]
     },
     {
       "scene": "Olive Young",
-      "recommendation": "悠遊付 TWQR 若可用 -> UniOpen -> eco 永續卡",
-      "note": "結帳前先看收銀台 TWQR 標誌，沒有就刷卡。",
-      "keywords": ["Olive Young", "TWQR", "UniOpen", "eco"]
+      "recommendation": "悠遊付 TWQR 若可用 -> 台灣Pay TWQR 20% -> SPORT Google Pay -> UniOpen -> eco 永續卡",
+      "note": "結帳前先看收銀台 TWQR 標誌；無 TWQR 但可感應 Google Pay 時才用 SPORT。",
+      "keywords": ["Olive Young", "TWQR", "UniOpen", "eco", "台灣Pay", "SPORT", "Google Pay"]
     },
     {
       "scene": "明洞大型商店",
-      "recommendation": "悠遊付 TWQR 若可用 -> UniOpen -> eco 永續卡",
-      "note": "大型商店較有機會支援 TWQR，但仍以現場標誌為準。",
-      "keywords": ["明洞", "大型商店", "TWQR", "UniOpen", "eco"]
+      "recommendation": "悠遊付 TWQR 若可用 -> 台灣Pay TWQR 20% -> SPORT Google Pay -> UniOpen -> eco 永續卡",
+      "note": "大型商店較有機會支援 TWQR 或感應支付，但仍以現場標誌與刷卡結果為準。",
+      "keywords": ["明洞", "大型商店", "TWQR", "UniOpen", "eco", "台灣Pay", "SPORT", "Google Pay"]
     },
     {
       "scene": "聖水 / 新沙 / 狎鷗亭品牌店",
-      "recommendation": "UniOpen -> eco 永續卡；若看到 TWQR 再改悠遊付",
-      "note": "潮流品牌店先以信用卡為主，不預設都有 TWQR。",
-      "keywords": ["聖水", "新沙", "狎鷗亭", "品牌店", "UniOpen", "eco"]
+      "recommendation": "SPORT Google Pay -> UniOpen -> eco 永續卡；若看到 TWQR 再改悠遊付 / 台灣Pay",
+      "note": "潮流品牌店先以信用卡與感應支付為主，不預設都有 TWQR。",
+      "keywords": ["聖水", "新沙", "狎鷗亭", "品牌店", "UniOpen", "eco", "SPORT", "Google Pay"]
     },
     {
       "scene": "廣藏市場",
@@ -129,15 +152,15 @@
     },
     {
       "scene": "餐廳 / 咖啡店",
-      "recommendation": "UniOpen -> eco 永續卡；若看到 TWQR 則悠遊付優先",
-      "note": "一般餐飲先刷卡，遇到 TWQR 再切悠遊付。",
-      "keywords": ["餐廳", "咖啡店", "TWQR", "UniOpen", "eco"]
+      "recommendation": "SPORT Google Pay -> UniOpen -> eco 永續卡；若看到 TWQR 則悠遊付 / 台灣Pay 優先",
+      "note": "一般餐飲先看是否可用 TWQR 或 Google Pay；都不行再刷實體信用卡。",
+      "keywords": ["餐廳", "咖啡店", "TWQR", "UniOpen", "eco", "SPORT", "Google Pay", "台灣Pay"]
     },
     {
       "scene": "漢江 GS25 泡麵",
-      "recommendation": "悠遊付 TWQR -> icash Pay -> UniOpen",
-      "note": "漢江便利商店購物可先找 TWQR 標誌。",
-      "keywords": ["漢江", "GS25", "泡麵", "便利商店", "TWQR", "icash"]
+      "recommendation": "悠遊付 TWQR -> 台灣Pay TWQR 20% -> icash Pay -> SPORT Google Pay -> UniOpen",
+      "note": "漢江便利商店購物可先找 TWQR 標誌，7/1 起台灣Pay可作第二 TWQR 選項。",
+      "keywords": ["漢江", "GS25", "泡麵", "便利商店", "TWQR", "icash", "台灣Pay", "SPORT", "Google Pay"]
     },
     {
       "scene": "交通：地鐵 / 公車",
@@ -158,33 +181,57 @@
       "period": "2026/6/1-2026/8/31；本行程 6/30-7/5 優先",
       "benefit": "活動一約 10.5% 悠遊付回饋，綁元大銀行帳戶再疊加 15%；活動二 TWQR 20% 的 6 月額度於 6/30 結束或已額滿，7/1 起月額度重新開始。",
       "conditions": "綁定元大銀行帳戶；現場需支援韓國 TWQR；以悠遊付 App 活動資格與顯示為準。",
+      "cap": "活動一每會員每月回饋上限 600 元；活動二每會員每月回饋上限 2,000 元；另有每月總量上限。",
       "scenes": "便利商店、Olive Young、明洞大型商店、漢江 GS25 泡麵、可見 TWQR 的店家",
       "notes": "可能有每月上限、總量上限或額滿提前結束；6/30-7/5 看到 TWQR 仍優先使用悠遊付。",
       "keywords": ["悠遊付", "元大", "TWQR", "便利商店", "Olive Young", "活動二", "20%"]
+    },
+    {
+      "tool": "台灣Pay",
+      "period": "2026/7/1 起依官方活動頁",
+      "benefit": "韓國 TWQR「暑假遊韓最速Pay」20% 回饋，可作為悠遊付活動二額滿或分散額度時的 TWQR 備援。",
+      "conditions": "須使用台灣Pay參與金融機構與官方活動指定付款方式；店家需支援韓國 TWQR；以台灣Pay官方活動頁與 App 顯示為準。",
+      "cap": "官方頁有活動限制與額度規則，需以活動頁/App 展開內容確認；本頁不硬猜每人上限。",
+      "scenes": "7/1 起 TWQR 店家、便利商店、明洞大型商店、漢江 GS25 泡麵",
+      "notes": "不是只用來查店家；7/1 20% 活動可列為 TWQR 第二優先。仍需注意額滿、金融機構與現場支援。",
+      "keywords": ["台灣Pay", "TWQR", "20%", "韓國", "7/1", "便利商店"]
     },
     {
       "tool": "icash Pay",
       "period": "2026/4/1-2026/8/31",
       "benefit": "非新戶仍可用一般回饋；不把新戶加碼列為主優惠。",
       "conditions": "使用 icash Pay 帳戶或指定銀行帳戶付款；現場需支援韓國 TWQR。",
+      "cap": "一般回饋每會員每月上限 300 OPENPOINT；活動總量上限依官方公告。",
       "scenes": "悠遊付不能用、額滿、交易失敗時的 TWQR 備援支付",
       "notes": "一般回饋與上限以官方公告為準；新戶加碼不適用於本使用者。",
       "keywords": ["icash", "icash Pay", "TWQR", "非新戶"]
     },
     {
-      "tool": "台灣Pay",
+      "tool": "台灣Pay 店家查詢",
       "period": "依官方韓國 TWQR 說明頁更新",
       "benefit": "定位為查詢韓國 TWQR 合作店家與使用說明。",
       "conditions": "用於確認 TWQR 標誌、合作店家與付款流程；本行程不作主要支付工具。",
+      "cap": "不適用，這是店家/流程查詢用途。",
       "scenes": "出發前或現場查詢韓國 TWQR 合作資訊",
       "notes": "店家是否支援仍以現場標誌或收銀機為準。",
       "keywords": ["台灣Pay", "TWQR", "合作店家", "查詢"]
+    },
+    {
+      "tool": "永豐 SPORT 卡 + Google Pay",
+      "period": "2026/7/1-2026/12/31",
+      "benefit": "一般消費最高 2% 豐點，指定行動支付/通路最高 5% 豐點；指定行動支付包含 Google Pay。韓國若以 Google Pay 完成國外一般消費且帳單明細符合指定支付認列，可列入最高 5%。",
+      "conditions": "需下載註冊大咖 DACARD App、啟用運動數據，當月達 10,000 大卡或 Apple Watch 圓滿畫圈 10 次，並完成永豐/京城銀行帳戶自動扣繳；Google Pay 帳單明細需明確顯示指定支付名稱。",
+      "cap": "官方 SPORT 卡頁文字未列明 5% 單月回饋上限；新戶 20% 刷卡金活動另有上限 500 元但不作本行程主策略。",
+      "scenes": "非 TWQR、可用 Google Pay 感應付款的品牌店、餐廳、咖啡店、大型商店",
+      "notes": "只在符合運動與自動扣繳條件時排在 UniOpen 前；Kakao T / Uber 綁卡不一定是 Google Pay，不預設適用 5%。",
+      "keywords": ["永豐", "SPORT", "Sport", "Google Pay", "5%", "豐點", "韓國", "國外消費"]
     },
     {
       "tool": "中信 UniOpen 卡",
       "period": "依中信銀行海外刷卡活動公告",
       "benefit": "非 TWQR 店家的主要信用卡選擇。",
       "conditions": "海外交易與活動回饋以銀行公告、卡片權益與帳單認列為準。",
+      "cap": "待出發前依中信銀行活動頁/App 確認海外回饋上限與是否需登錄。",
       "scenes": "餐廳、咖啡店、品牌店、無 TWQR 店家、Kakao T / Uber",
       "notes": "出發前再確認海外回饋、手續費與是否需登錄。",
       "keywords": ["UniOpen", "中信", "信用卡", "Kakao T", "Uber"]
@@ -194,6 +241,7 @@
       "period": "依星展銀行海外刷卡活動公告",
       "benefit": "UniOpen 不適用或刷卡備援。",
       "conditions": "海外交易與活動回饋以銀行公告、卡片權益與帳單認列為準。",
+      "cap": "待出發前依星展銀行活動頁/App 確認海外回饋上限與是否需登錄。",
       "scenes": "餐廳、咖啡店、品牌店、明洞大型商店備援",
       "notes": "出發前再確認海外回饋、手續費與是否需登錄。",
       "keywords": ["eco", "星展", "DBS", "備援", "信用卡"]
@@ -203,6 +251,7 @@
       "period": "全程",
       "benefit": "地鐵、公車最穩定。",
       "conditions": "先儲值，保留餘額搭車。",
+      "cap": "不適用，交通儲值工具。",
       "scenes": "地鐵、公車、交通移動",
       "notes": "交通支付不要依賴 TWQR 或一般信用卡。",
       "keywords": ["T-money", "WOWPASS", "地鐵", "公車", "交通"]
@@ -212,6 +261,7 @@
       "period": "全程備援",
       "benefit": "市場、小攤、臨時狀況最穩。",
       "conditions": "準備小額韓元現金與至少一張可用信用卡。",
+      "cap": "不適用；信用卡部分依實際使用卡片上限。",
       "scenes": "廣藏市場、小吃攤、傳統市場、TWQR 或 App 失敗時",
       "notes": "不要完全依賴行動支付。",
       "keywords": ["現金", "信用卡", "廣藏市場", "小吃攤", "傳統市場"]
@@ -220,6 +270,8 @@
   "reminders": [
     "優惠活動可能有每月上限、總量上限或額滿提前結束。",
     "悠遊付活動二 20% 的 6 月額度於 6/30 結束或已額滿；7/1 起月額度重新開始，但仍可能再次額滿。",
+    "台灣Pay 7/1 韓國 TWQR 20% 活動可列為第二 TWQR 選項，仍需確認參與金融機構、每人上限與總量是否額滿。",
+    "永豐 SPORT 卡 Google Pay 最高 5% 需符合大咖 DACARD、運動數據、自動扣繳與帳單明細認列條件；韓國店家也必須能用 Google Pay 或感應付款。",
     "實際回饋以官方公告與 App 顯示為準。",
     "店家是否支援 TWQR 以現場標誌或收銀機為準。",
     "傳統市場與小攤不保證支援行動支付。",
@@ -236,6 +288,9 @@
     "元大",
     "星展",
     "中信",
+    "永豐",
+    "SPORT",
+    "Google Pay",
     "T-money",
     "WOWPASS",
     "Kakao T",
