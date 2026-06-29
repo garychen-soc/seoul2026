@@ -1,7 +1,7 @@
 const STATIC_CACHE = 'seoul2026-static';
 const HTML_CACHE = 'seoul2026-html';
 const VERSION_URL = './version.json';
-const STATIC_ASSETS = ['./manifest.json', './icons/icon.svg', './version.json'];
+const STATIC_ASSETS = ['./manifest.json', './icons/icon.svg', './version.json', './data/payment.json'];
 
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(STATIC_CACHE).then(cache => cache.addAll(STATIC_ASSETS)).then(() => self.skipWaiting()));

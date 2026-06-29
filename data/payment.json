@@ -1,0 +1,243 @@
+{
+  "updated": "2026-06-29",
+  "title": "支付建議 / Payment",
+  "userContext": [
+    "不是 icash Pay 新戶",
+    "有元大銀行帳戶",
+    "持有星展 eco 永續卡",
+    "持有中信 UniOpen 卡",
+    "eSIM 已購買"
+  ],
+  "sources": [
+    {
+      "name": "icash Pay 韓國 TWQR 活動",
+      "url": "https://www.icashpay.com.tw/advertMessage/view/id/2189",
+      "summary": "2026/4/1 起至 2026/8/31，韓國 TWQR 店家使用 icash Pay 條碼付款有一般回饋；本行程使用者不是新戶，因此不把新戶加碼列為主優惠。"
+    },
+    {
+      "name": "悠遊付韓國 TWQR 活動",
+      "url": "https://www.easycard.com.tw/offer?cls=1506473490,1506473503,1508721809,&id=1779331719",
+      "summary": "2026/6/1 至 2026/8/31，韓國 TWQR 店家使用悠遊付付款碼可享回饋；持元大銀行帳戶時，7/1-7/5 韓國 TWQR 優先使用悠遊付。"
+    },
+    {
+      "name": "台灣Pay 韓國 TWQR 店家與說明",
+      "url": "https://www.taiwanpay.com.tw/fisc-tpay/news/shopping/korea",
+      "summary": "用來查詢韓國 TWQR 合作店家、標誌與使用說明；此行程不把台灣Pay列為主要支付工具。"
+    }
+  ],
+  "priority": [
+    {
+      "rank": 1,
+      "title": "7/1-7/5 看到韓國 TWQR",
+      "recommendation": "優先使用悠遊付，並綁定元大銀行帳戶付款。",
+      "keywords": ["悠遊付", "元大", "TWQR", "便利商店", "Olive Young", "明洞"]
+    },
+    {
+      "rank": 2,
+      "title": "6/30 或悠遊付不能用",
+      "recommendation": "若店家支援 TWQR，改用 icash Pay。使用者非新戶，只看一般回饋，不把新戶加碼當主優惠。",
+      "keywords": ["icash", "icash Pay", "TWQR", "非新戶"]
+    },
+    {
+      "rank": 3,
+      "title": "非 TWQR 店家",
+      "recommendation": "優先刷中信 UniOpen 卡。",
+      "keywords": ["UniOpen", "信用卡", "非 TWQR"]
+    },
+    {
+      "rank": 4,
+      "title": "UniOpen 不適用或備援",
+      "recommendation": "使用星展 eco 永續卡。",
+      "keywords": ["eco", "星展", "DBS", "備援"]
+    },
+    {
+      "rank": 5,
+      "title": "地鐵與公車",
+      "recommendation": "使用 T-money / WOWPASS。",
+      "keywords": ["T-money", "WOWPASS", "地鐵", "公車", "交通"]
+    },
+    {
+      "rank": 6,
+      "title": "Kakao T / Uber",
+      "recommendation": "App 內綁信用卡，UniOpen 優先。",
+      "keywords": ["Kakao T", "Uber", "計程車", "UniOpen"]
+    },
+    {
+      "rank": 7,
+      "title": "廣藏市場、小吃攤、傳統市場",
+      "recommendation": "準備信用卡與現金，不要完全依賴 TWQR。",
+      "keywords": ["廣藏市場", "市場", "小吃攤", "現金", "信用卡"]
+    }
+  ],
+  "quickRules": [
+    {
+      "trigger": "看到 TWQR 標誌",
+      "action": "先用悠遊付",
+      "note": "7/1-7/5 旅程主力，綁元大銀行帳戶。"
+    },
+    {
+      "trigger": "悠遊付不能用",
+      "action": "改用 icash Pay",
+      "note": "6/30 或悠遊付失敗時的 TWQR 備援。"
+    },
+    {
+      "trigger": "沒有 TWQR",
+      "action": "中信 UniOpen",
+      "note": "一般店家刷卡主力。"
+    },
+    {
+      "trigger": "市場小攤",
+      "action": "現金 / 信用卡",
+      "note": "廣藏市場與傳統市場不要把 TWQR 當主支付。"
+    },
+    {
+      "trigger": "地鐵公車",
+      "action": "T-money / WOWPASS",
+      "note": "交通卡優先，避免現場卡關。"
+    }
+  ],
+  "scenarios": [
+    {
+      "scene": "CU / GS25 / 7-11 / emart24",
+      "recommendation": "悠遊付 TWQR -> icash Pay -> UniOpen",
+      "note": "便利商店看到 TWQR 先掃悠遊付；漢江 GS25 泡麵也同樣處理。",
+      "keywords": ["便利商店", "CU", "GS25", "7-11", "emart24", "漢江", "泡麵", "TWQR"]
+    },
+    {
+      "scene": "Olive Young",
+      "recommendation": "悠遊付 TWQR 若可用 -> UniOpen -> eco 永續卡",
+      "note": "結帳前先看收銀台 TWQR 標誌，沒有就刷卡。",
+      "keywords": ["Olive Young", "TWQR", "UniOpen", "eco"]
+    },
+    {
+      "scene": "明洞大型商店",
+      "recommendation": "悠遊付 TWQR 若可用 -> UniOpen -> eco 永續卡",
+      "note": "大型商店較有機會支援 TWQR，但仍以現場標誌為準。",
+      "keywords": ["明洞", "大型商店", "TWQR", "UniOpen", "eco"]
+    },
+    {
+      "scene": "聖水 / 新沙 / 狎鷗亭品牌店",
+      "recommendation": "UniOpen -> eco 永續卡；若看到 TWQR 再改悠遊付",
+      "note": "潮流品牌店先以信用卡為主，不預設都有 TWQR。",
+      "keywords": ["聖水", "新沙", "狎鷗亭", "品牌店", "UniOpen", "eco"]
+    },
+    {
+      "scene": "廣藏市場",
+      "recommendation": "信用卡 / 現金；TWQR 不要列為主要支付方式",
+      "note": "傳統市場與小吃攤支援度不穩，現金一定要準備。",
+      "keywords": ["廣藏市場", "傳統市場", "小吃攤", "現金", "信用卡"]
+    },
+    {
+      "scene": "餐廳 / 咖啡店",
+      "recommendation": "UniOpen -> eco 永續卡；若看到 TWQR 則悠遊付優先",
+      "note": "一般餐飲先刷卡，遇到 TWQR 再切悠遊付。",
+      "keywords": ["餐廳", "咖啡店", "TWQR", "UniOpen", "eco"]
+    },
+    {
+      "scene": "漢江 GS25 泡麵",
+      "recommendation": "悠遊付 TWQR -> icash Pay -> UniOpen",
+      "note": "漢江便利商店購物可先找 TWQR 標誌。",
+      "keywords": ["漢江", "GS25", "泡麵", "便利商店", "TWQR", "icash"]
+    },
+    {
+      "scene": "交通：地鐵 / 公車",
+      "recommendation": "T-money / WOWPASS",
+      "note": "不要用信用卡或 TWQR 當主要交通支付。",
+      "keywords": ["交通", "地鐵", "公車", "T-money", "WOWPASS"]
+    },
+    {
+      "scene": "計程車：Kakao T / Uber",
+      "recommendation": "綁信用卡，UniOpen 優先",
+      "note": "出發前先在 App 確認信用卡可用。",
+      "keywords": ["計程車", "Kakao T", "Uber", "信用卡", "UniOpen"]
+    }
+  ],
+  "offers": [
+    {
+      "tool": "悠遊付",
+      "period": "2026/6/1-2026/8/31；本行程 7/1-7/5 優先",
+      "benefit": "韓國 TWQR 店家付款碼回饋；元大銀行帳戶加碼適合本使用者。",
+      "conditions": "綁定元大銀行帳戶；現場需支援韓國 TWQR；以悠遊付 App 活動資格與顯示為準。",
+      "scenes": "便利商店、Olive Young、明洞大型商店、漢江 GS25 泡麵、可見 TWQR 的店家",
+      "notes": "可能有每月上限、總量上限或額滿提前結束；7/1-7/5 優先使用。",
+      "keywords": ["悠遊付", "元大", "TWQR", "便利商店", "Olive Young"]
+    },
+    {
+      "tool": "icash Pay",
+      "period": "2026/4/1-2026/8/31",
+      "benefit": "非新戶仍可用一般回饋；不把新戶加碼列為主優惠。",
+      "conditions": "使用 icash Pay 帳戶或指定銀行帳戶付款；現場需支援韓國 TWQR。",
+      "scenes": "6/30、悠遊付不能用、TWQR 店家的備援支付",
+      "notes": "一般回饋與上限以官方公告為準；新戶加碼不適用於本使用者。",
+      "keywords": ["icash", "icash Pay", "TWQR", "非新戶"]
+    },
+    {
+      "tool": "台灣Pay",
+      "period": "依官方韓國 TWQR 說明頁更新",
+      "benefit": "定位為查詢韓國 TWQR 合作店家與使用說明。",
+      "conditions": "用於確認 TWQR 標誌、合作店家與付款流程；本行程不作主要支付工具。",
+      "scenes": "出發前或現場查詢韓國 TWQR 合作資訊",
+      "notes": "店家是否支援仍以現場標誌或收銀機為準。",
+      "keywords": ["台灣Pay", "TWQR", "合作店家", "查詢"]
+    },
+    {
+      "tool": "中信 UniOpen 卡",
+      "period": "依中信銀行海外刷卡活動公告",
+      "benefit": "非 TWQR 店家的主要信用卡選擇。",
+      "conditions": "海外交易與活動回饋以銀行公告、卡片權益與帳單認列為準。",
+      "scenes": "餐廳、咖啡店、品牌店、無 TWQR 店家、Kakao T / Uber",
+      "notes": "出發前再確認海外回饋、手續費與是否需登錄。",
+      "keywords": ["UniOpen", "中信", "信用卡", "Kakao T", "Uber"]
+    },
+    {
+      "tool": "星展 eco 永續卡",
+      "period": "依星展銀行海外刷卡活動公告",
+      "benefit": "UniOpen 不適用或刷卡備援。",
+      "conditions": "海外交易與活動回饋以銀行公告、卡片權益與帳單認列為準。",
+      "scenes": "餐廳、咖啡店、品牌店、明洞大型商店備援",
+      "notes": "出發前再確認海外回饋、手續費與是否需登錄。",
+      "keywords": ["eco", "星展", "DBS", "備援", "信用卡"]
+    },
+    {
+      "tool": "T-money / WOWPASS",
+      "period": "全程",
+      "benefit": "地鐵、公車最穩定。",
+      "conditions": "先儲值，保留餘額搭車。",
+      "scenes": "地鐵、公車、交通移動",
+      "notes": "交通支付不要依賴 TWQR 或一般信用卡。",
+      "keywords": ["T-money", "WOWPASS", "地鐵", "公車", "交通"]
+    },
+    {
+      "tool": "現金 / 信用卡",
+      "period": "全程備援",
+      "benefit": "市場、小攤、臨時狀況最穩。",
+      "conditions": "準備小額韓元現金與至少一張可用信用卡。",
+      "scenes": "廣藏市場、小吃攤、傳統市場、TWQR 或 App 失敗時",
+      "notes": "不要完全依賴行動支付。",
+      "keywords": ["現金", "信用卡", "廣藏市場", "小吃攤", "傳統市場"]
+    }
+  ],
+  "reminders": [
+    "優惠活動可能有每月上限、總量上限或額滿提前結束。",
+    "實際回饋以官方公告與 App 顯示為準。",
+    "店家是否支援 TWQR 以現場標誌或收銀機為準。",
+    "傳統市場與小攤不保證支援行動支付。",
+    "信用卡海外回饋可能依銀行活動調整，出發前需再確認。"
+  ],
+  "searchKeywords": [
+    "悠遊付",
+    "icash",
+    "TWQR",
+    "UniOpen",
+    "eco",
+    "廣藏市場",
+    "便利商店",
+    "元大",
+    "星展",
+    "中信",
+    "T-money",
+    "WOWPASS",
+    "Kakao T",
+    "Uber"
+  ]
+}
