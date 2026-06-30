@@ -1,6 +1,6 @@
 {
-  "version": "2026-06-30-airport-bus-schedule",
-  "sha": "manual-airport-bus-schedule",
+  "version": "2026-06-30-airport-bus-ticket-deadline",
+  "sha": "manual-airport-bus-ticket-deadline",
   "run": "manual",
-  "builtAt": "2026-06-30T06:15:00Z"
+  "builtAt": "2026-06-30T08:05:00Z"
 }
