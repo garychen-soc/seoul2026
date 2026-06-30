@@ -1,6 +1,6 @@
 {
-  "version": "2026-06-29-flight-radar-links",
-  "sha": "manual-flight-radar-links",
+  "version": "2026-06-30-airport-bus-schedule",
+  "sha": "manual-airport-bus-schedule",
   "run": "manual",
-  "builtAt": "2026-06-29T14:40:00Z"
+  "builtAt": "2026-06-30T06:15:00Z"
 }
