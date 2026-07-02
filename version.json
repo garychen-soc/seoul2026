@@ -1,6 +1,6 @@
 {
-  "version": "2026-06-30-airport-bus-ticket-deadline",
-  "sha": "manual-airport-bus-ticket-deadline",
+  "version": "2026-07-02-payment-cashback-tiers",
+  "sha": "manual-payment-cashback-tiers",
   "run": "manual",
-  "builtAt": "2026-06-30T08:05:00Z"
+  "builtAt": "2026-07-02T09:20:00Z"
 }
